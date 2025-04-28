@@ -1,10 +1,10 @@
 class ApiError extends Error{
-        statusCode = 500
-        constructor(statusCode, msg){
-            super(msg)
-            this.message = msg
-            this.statusCode = statusCode
-        }
+    constructor(statusCode = 500, msg = "Something went wrong") {
+        super(msg);
+        this.statusCode = statusCode;
+        this.message = msg;
+
+    }
 }
 
-module.exports = ApiError
+module.exports = ApiError;

@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const ErrorHandling = require("./middlewares/ErrorHandler");
-const ApiError = require("./utils/apiError");
+const ApiError = require("./utils/ApiError");
 
 
 app.use(cors());
@@ -17,9 +17,10 @@ app.use(express.urlencoded({extended:false}))
 
 app.use("/api/v1",require("./routes"))
 
-// app.use("*",(Req,res)=>{
-//     throw new ApiError(400, "page not found");
-// })
+app.use("*",(req,res)=>{
+    throw new ApiError(400, "page not found");
+})
+
 
 app.use(ErrorHandling)
 
